@@ -1,53 +1,122 @@
 package com.GRP13.ETour.Models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="tours")
 public class Tours {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int tour_Id;
-	@Column(name="tour_location")
-	String tour_Location;
-	@Column(name="tour_type")
-	String tour_type;
+	@Column(name="tour_id")
+	private int tour_id;
+	private String tour_type;
+	private String tour_location;
+	private String package_type;
+	private String package_name;
+	private String package_desc;
+	private String start_date;
+	private String end_date;
+	
+	@OneToOne(mappedBy = "tour", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Iternary iternary;
+	
+	
+	private int no_of_travellers;
+	private int package_cost;
+	
+	
+	public Tours(int tour_id, String tour_type, String tour_location, String package_type, String package_name,
+			String package_desc, String start_date, String end_date, Iternary iternary, int no_of_travellers,
+			int package_cost) {
+		super();
+		this.tour_id = tour_id;
+		this.tour_type = tour_type;
+		this.tour_location = tour_location;
+		this.package_type = package_type;
+		this.package_name = package_name;
+		this.package_desc = package_desc;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.iternary = iternary;
+		this.no_of_travellers = no_of_travellers;
+		this.package_cost = package_cost;
+	}
+	
 	
 	public Tours() {
-		
-	}
-	
-	
-	public Tours(String tour_Location, String tour_type) {
 		super();
-		this.tour_Location = tour_Location;
-		this.tour_type = tour_type;
+		// TODO Auto-generated constructor stub
 	}
-	
-	
-	public int gettour_Id() {
-		return tour_Id;
+
+
+	public int getTour_id() {
+		return tour_id;
 	}
-	public void settour_Id(int tour_Id) {
-		this.tour_Id = tour_Id;
+	public void setTour_id(int tour_id) {
+		this.tour_id = tour_id;
 	}
-	public String gettour_Location() {
-		return tour_Location;
-	}
-	public void settour_Location(String tour_Location) {
-		this.tour_Location = tour_Location;
-	}
-	public String gettour_type() {
+	public String getTour_type() {
 		return tour_type;
 	}
-	public void settour_type(String tour_type) {
+	public void setTour_type(String tour_type) {
 		this.tour_type = tour_type;
 	}
+	public String getTour_location() {
+		return tour_location;
+	}
+	public void setTour_location(String tour_location) {
+		this.tour_location = tour_location;
+	}
+	public String getPackage_type() {
+		return package_type;
+	}
+	public void setPackage_type(String package_type) {
+		this.package_type = package_type;
+	}
+	public String getPackage_name() {
+		return package_name;
+	}
+	public void setPackage_name(String package_name) {
+		this.package_name = package_name;
+	}
+	public String getPackage_desc() {
+		return package_desc;
+	}
+	public void setPackage_desc(String package_desc) {
+		this.package_desc = package_desc;
+	}
+	public String getStart_date() {
+		return start_date;
+	}
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
+	public String getEnd_date() {
+		return end_date;
+	}
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
+	}
+	public Iternary getIternary() {
+		return iternary;
+	}
+	public void setIternary(Iternary iternary) {
+		this.iternary = iternary;
+	}
+	public int getNo_of_travellers() {
+		return no_of_travellers;
+	}
+	public void setNo_of_travellers(int no_of_travellers) {
+		this.no_of_travellers = no_of_travellers;
+	}
+	public int getPackage_cost() {
+		return package_cost;
+	}
+	public void setPackage_cost(int package_cost) {
+		this.package_cost = package_cost;
+	}
 	
+	
+
 }
