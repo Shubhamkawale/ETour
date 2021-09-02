@@ -1,5 +1,7 @@
 package com.GRP13.ETour.Models;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,17 +19,18 @@ public class Tours {
 	private String start_date;
 	private String end_date;
 	
-	@OneToOne(mappedBy = "tour", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private Iternary iternary;
 	
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="tour_id")
+	private Set<Booking> bookings;
 	
 	private int no_of_travellers;
 	private int package_cost;
 	
 	
 	public Tours(int tour_id, String tour_type, String tour_location, String package_type, String package_name,
-			String package_desc, String start_date, String end_date, Iternary iternary, int no_of_travellers,
+			String package_desc, String start_date, String end_date, int no_of_travellers,
 			int package_cost) {
 		super();
 		this.tour_id = tour_id;
@@ -38,7 +41,7 @@ public class Tours {
 		this.package_desc = package_desc;
 		this.start_date = start_date;
 		this.end_date = end_date;
-		this.iternary = iternary;
+		
 		this.no_of_travellers = no_of_travellers;
 		this.package_cost = package_cost;
 	}
@@ -98,12 +101,7 @@ public class Tours {
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-	public Iternary getIternary() {
-		return iternary;
-	}
-	public void setIternary(Iternary iternary) {
-		this.iternary = iternary;
-	}
+
 	public int getNo_of_travellers() {
 		return no_of_travellers;
 	}

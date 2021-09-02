@@ -1,6 +1,7 @@
 package com.GRP13.ETour.Models;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -17,10 +18,10 @@ public class Iternary {
 	@Id
 	private int iternary_id;
 	
-	@OneToOne(fetch = FetchType.EAGER, optional = false)
-	@MapsId
-    @JoinColumn(name = "tour_id", nullable = false)
-    private Tours tour;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="tour_id")
+	private Tours tour;
+
 	
 	private String day1;
 	private String day2;
