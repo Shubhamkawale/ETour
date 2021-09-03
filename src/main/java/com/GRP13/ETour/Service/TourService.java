@@ -30,5 +30,10 @@ public class TourService {
 	public void addTour(Tours tour) {
 		tourRepository.save(tour);
 	}
+	
+	public void addSeat(int seats, int tour_id) 
+	{
+		tourRepository.addSeat(seats, tour_id);
+	}
 		
 }

@@ -18,9 +18,10 @@ public class Tours {
 	private String package_desc;
 	private String start_date;
 	private String end_date;
+	private int filled_seats;
 	
 	
-	
+
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="tour_id")
 	private Set<Booking> bookings;
@@ -30,7 +31,7 @@ public class Tours {
 	
 	
 	public Tours(int tour_id, String tour_type, String tour_location, String package_type, String package_name,
-			String package_desc, String start_date, String end_date, int no_of_travellers,
+			String package_desc, String start_date, String end_date, int no_of_travellers,int filled_seats,
 			int package_cost) {
 		super();
 		this.tour_id = tour_id;
@@ -44,6 +45,8 @@ public class Tours {
 		
 		this.no_of_travellers = no_of_travellers;
 		this.package_cost = package_cost;
+		this.filled_seats=filled_seats;
+		
 	}
 	
 	
@@ -52,7 +55,14 @@ public class Tours {
 		// TODO Auto-generated constructor stub
 	}
 
+	public int getFilled_seats() {
+		return filled_seats;
+	}
 
+
+	public void setFilled_seats(int filled_seats) {
+		this.filled_seats = filled_seats;
+	}
 	public int getTour_id() {
 		return tour_id;
 	}

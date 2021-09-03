@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,9 +25,9 @@ public class TourController {
 		return tourserv.getTour();
 	}		
 	
+
 	@GetMapping(value="/Tour/{tour_id}")
 	public Tours getTour(@PathVariable int tour_id) {
-		
 		Tours tour= tourserv.getTour(tour_id);
 		return tour;
 		
@@ -36,5 +37,17 @@ public class TourController {
 	public void addTour(@RequestBody Tours tour)
 	{
 		tourserv.addTour(tour);
+	}
+	
+	@DeleteMapping(value="Tour/delete/{tour_id}")
+	public void deleteTour(@PathVariable int tour_id) {
+		tourserv.deleteTour(tour_id);
+		
+	}
+	
+	@PutMapping(value="Tour/{seats}/{tour_id}")
+	public void addSeat(@PathVariable int seats, @PathVariable int tour_id) {
+		tourserv.addSeat(seats, tour_id);
+		
 	}
 }

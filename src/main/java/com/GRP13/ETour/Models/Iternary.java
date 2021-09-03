@@ -18,10 +18,7 @@ public class Iternary {
 	@Id
 	private int iternary_id;
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="tour_id")
-	private Tours tour;
-
+	
 	
 	private String day1;
 	private String day2;
@@ -35,14 +32,17 @@ public class Iternary {
 	private String day10;
 
 	
-	
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="tour_id")
+	private Tours tour;
+
 
 
 	public Iternary(int iternary_id, Tours tour, String day1, String day2, String day3, String day4, String day5,
 			String day6, String day7, String day8, String day9, String day10) {
 		super();
 		this.iternary_id = iternary_id;
-		this.tour = tour;
+		
 		this.day1 = day1;
 		this.day2 = day2;
 		this.day3 = day3;
@@ -62,14 +62,7 @@ public class Iternary {
 	}
 
 
-	public Tours getTour() {
-		return tour;
-	}
 
-
-	public void setTour(Tours tour) {
-		this.tour = tour;
-	}
 
 
 	public String getDay1() {
